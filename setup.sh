@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail # no command output
+set -euo pipefail # stop on any error, unset variable, or failed pipe stage
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOCAL_BIN_SRC="$SCRIPT_DIR/local/bin"
