@@ -41,27 +41,6 @@ symlink() {
     echo -e "\e[32m→\e[0m Linked $dest"
 }
 
-xfapply() {
-  local channel="$1"
-  local path="$2"
-  local type="$3"
-  shift 3
-
-  # Remove existing value (keeps idempotency clean)
-  xfconf-query -c "$channel" -p "$path" -r 2>/dev/null || true
-
-  if [ "$type" = "array" ]; then
-    local args=()
-    for val in "$@"; do
-      args+=(-t string -s "$val")
-    done
-    xfconf-query -c "$channel" -p "$path" -n --force-array "${args[@]}"
-  else
-    xfconf-query -c "$channel" -p "$path" -n -t "$type" -s "$1"
-  fi
-}
-
-
 #########################################
 # Dotfile Symlinks
 #########################################
