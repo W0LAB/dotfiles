@@ -1,0 +1,10 @@
+nm-applet &
+# volctl &
+xset r rate 185 50 &
+xscreensaver --no-splash &
+# xfce4-power-manager &
+nitrogen --restore &
+flameshot &
+# picom -D 1 &
+blueman-applet &
+lxpolkit &

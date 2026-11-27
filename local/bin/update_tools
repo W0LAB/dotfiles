@@ -1,0 +1,20 @@
+#!/bin/bash
+# Script to automatically update various github repos
+
+export RED='\033[1;31m'
+export GREEN='\033[1;32m'
+export NC='\033[0m' # No color
+
+repo_dirs=("$HOME/tools" "$HOME/rf_stuffz" "$HOME/projects")
+for found_dir in "${repo_dirs[@]}"; do
+    if [[ -d "$found_dir" ]]; then
+        find "${found_dir}/." -type d -name ".git" -execdir sh -c '
+            printf "${GREEN}[*]${NC} Updating $(pwd)\n"
+            git submodule init
+            git pull --recurse-submodules
+            echo
+        ' \;
+    else
+        printf "${RED}[*]${NC} ${found_dir} not found\n"
+    fi
+done
